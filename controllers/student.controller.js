@@ -21,7 +21,20 @@ async function getStudents(req,res){
 }
 
 }
+async function getStudentsByrollNo(req,res){
+    try{
+        let rollNO = parseInt((req.params.rollNO));
+        console.log(rollNO,'rollNo')
+ let students = await Student.findOne({rollNO:rollNO});
+ console.log(students,'students');
+ res.send(students)
+    }catch(err){
+        console.log(err)
+}
+
+}
 module.exports = {
     addStudent,
-    getStudents
+    getStudents,
+    getStudentsByrollNo
 }
